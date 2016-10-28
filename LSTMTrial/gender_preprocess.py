@@ -39,10 +39,10 @@ def tokenize(sentences):
 
 def build_dict(path):
     sentences = []
-    with open('M', 'r') as f:
+    with open('./data/M', 'r') as f:
 	for line in f:    	
 		sentences.append(line.strip())
-    with open('F', 'r') as f:
+    with open('./data/F', 'r') as f:
 	for line in f:
 	    	sentences.append(line.strip())
     
@@ -92,8 +92,8 @@ def main():
     path = dataset_path
     dictionary = build_dict(os.path.join(path, 'train'))
 
-    x_pos = grab_data('M', dictionary)
-    x_neg = grab_data('F', dictionary)
+    x_pos = grab_data('./data/M', dictionary)
+    x_neg = grab_data('./data/F', dictionary)
     x = x_pos + x_neg
     y = [1] * len(x_pos) + [0] * len(x_neg)
     train_x = x[:100] 
@@ -103,14 +103,14 @@ def main():
  	    
     print len(train_x),len(train_y), 'samples in the training set'
     print len(test_x),len(test_y), 'samples in the testing set' 	
-    f = open('gender.pkl', 'wb')
+    '''f = open('gender.pkl', 'wb')
     pkl.dump((train_x, train_y), f, -1)
     pkl.dump((test_x, test_y), f, -1)
     f.close()
 
     f = open('gender.dict.pkl', 'wb')
     pkl.dump(dictionary, f, -1)
-    f.close()
+    f.close()'''
 
 if __name__ == '__main__':
     main()
