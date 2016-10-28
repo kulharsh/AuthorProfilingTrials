@@ -1,0 +1,6 @@
+**/data/
+**/runs/
+*.npz
+*.txt
+*.pyc
+*.pkl
